@@ -10,9 +10,6 @@
   // CONFIGURATION
   // ============================================
   const CONFIG = {
-    particleCount: 30,
-    particleMinDuration: 10,
-    particleMaxDuration: 20,
     revealThreshold: 0.1,
     skillBarThreshold: 0.5,
     navOffset: 200,
@@ -23,7 +20,6 @@
   // DOM ELEMENTS
   // ============================================
   const elements = {
-    particles: document.getElementById('particles'),
     navToggle: document.querySelector('.nav-toggle'),
     navLinks: document.querySelector('.nav-links'),
     navLinksItems: document.querySelectorAll('.nav-links a'),
@@ -32,30 +28,6 @@
     statNumbers: document.querySelectorAll('.stat-number'),
     sections: document.querySelectorAll('section[id]')
   };
-
-  // ============================================
-  // PARTICLE SYSTEM
-  // ============================================
-  function initParticles() {
-    if (!elements.particles) return;
-
-    const fragment = document.createDocumentFragment();
-
-    for (let i = 0; i < CONFIG.particleCount; i++) {
-      const particle = document.createElement('div');
-      particle.className = 'particle';
-      particle.style.left = Math.random() * 100 + '%';
-      particle.style.top = Math.random() * 100 + '%';
-      particle.style.animationDelay = Math.random() * 15 + 's';
-      particle.style.animationDuration = (
-        CONFIG.particleMinDuration + 
-        Math.random() * (CONFIG.particleMaxDuration - CONFIG.particleMinDuration)
-      ) + 's';
-      fragment.appendChild(particle);
-    }
-
-    elements.particles.appendChild(fragment);
-  }
 
   // ============================================
   // MOBILE NAVIGATION
@@ -254,7 +226,6 @@
   // INITIALIZE EVERYTHING
   // ============================================
   function init() {
-    initParticles();
     initMobileNav();
     initScrollReveal();
     initSkillBars();
